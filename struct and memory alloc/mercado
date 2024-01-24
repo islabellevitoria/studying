@@ -24,7 +24,7 @@ int main(){
 
             for(j=0;j<produtos;j++){
 
-                scanf("%s%lf", lista_de_produtos[j].nome, &lista_de_produtos[j].preco);  //entrada dos prod disponiveis + preço
+                scanf("%s%lf", lista_de_produtos[j].nome, &lista_de_produtos[j].preco);  //entrada dos prod disponiveis + preÃ§o
             }
 
             scanf("%d", &compras);
