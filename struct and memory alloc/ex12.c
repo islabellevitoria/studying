@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-typedef struct{
+typedef struct{ //estrutura do imovel
 
     int moradores;
     int consumo;
@@ -13,7 +13,7 @@ int main(){
     int n = 1, i, cont = 0;
     Imovel temp;
 
-    while(n != 0){
+    while(n != 0){ //entrada dos valores enquanto n nao for 0
         scanf("%d", &n);
         if(n==0){
             break;
@@ -24,7 +24,7 @@ int main(){
         for(i=0;i<n;i++){
             scanf("%d %d", &imovel[i].moradores, &imovel[i].consumo);
         }
-        valorConsumo(imovel, temp, cont, n);
+        valorConsumo(imovel, temp, cont, n); //chama a função para calcular o valor do consumo e imprimir
     }
     return 0;
 }
@@ -42,7 +42,7 @@ void valorConsumo(Imovel *imovel, Imovel temp, int cont, int n){
 
     consumo_medio = (consumo_medio)/tot;
 
-    for(i = 0; i < n-1; i++) {
+    for(i = 0; i < n-1; i++) { //ordena o consumo de forma crescente 
     for(j = 0; j < n-i-1; j++) {
         if(imovel[j].consumo > imovel[j+1].consumo) {
             temp = imovel[j];
@@ -54,13 +54,13 @@ void valorConsumo(Imovel *imovel, Imovel temp, int cont, int n){
 
     printf("Cidade# %d:\n", cont);
     for(i=0;i<n;i++){
-        for(j=i+1;j<n;j++){
+        for(j=i+1;j<n;j++){ //soma as casas que possuem o mesmo consumo de energia
             if(imovel[i].consumo == imovel[j].consumo){
                 imovel[i].moradores += imovel[j].moradores;
-                imovel[j].moradores = 0;
+                imovel[j].moradores = 0; //recebe 0 o que ja foi somado
             }
         }
-        if(imovel[i].moradores!=0){
+        if(imovel[i].moradores!=0){ //ignora os que ja foram somados para nao ocorrer dupla impressao
             printf("%d-%d ", imovel[i].moradores, imovel[i].consumo);
         }
     }
