@@ -7,7 +7,7 @@ int contagemX(char string[], int tam) {
         return 0;
     }
 
-    return (string[0] == 'h' && string[1] == 'i') + contagemX(string + 1, tam - 1);
+    return (string[0] == '5') + contagemX(string + 1, tam - 1);
 }
 
 int main() {
