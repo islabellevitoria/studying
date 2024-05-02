@@ -1,32 +1,27 @@
-#include <stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include<stdio.h>
 
-int contagemX(char string[], int tam) {
-    if(tam == 0) {
-        return 0;
-    }
+int Fack(int m, int n);
 
-    return (string[0] == '5') + contagemX(string + 1, tam - 1);
-}
+int main(){
 
-int main() {
-    int n, i;
-
-    scanf("%d", &n);
-    getchar();
-    char *string[n];
-
-    for (i = 0; i < n; i++) {
-        string[i] = malloc(50);
-        scanf("%[^\n]", string[i]);
-        getchar();
-    }
-
-    for (i = 0; i < n; i++) {
-        printf("%d\n", contagemX(string[i], strlen(string[i])));
-        free(string[i]);
-    }
+    int n, m;
+    scanf("%d %d", &m, &n);
+    printf("%d", Fack(m,n));
 
     return 0;
+}
+
+int Fack(int m, int n){
+
+    if(m==0){
+        return n+1;
+    }
+
+    if(n==0){
+        return Fack(m-1,1);
+    }
+
+    if(n>0){
+        return Fack(m-1, Fack(m,n-1));
+    }
 }

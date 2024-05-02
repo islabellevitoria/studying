@@ -1,39 +1,24 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+#include <stdio.h>
 
-int Soma(int n) {
+int numeroReverso(int n, int reverso);
 
-    if (n == 1) {
-        return 1;
-    }
+int main() {
+    int n;
+    scanf("%d", &n);
 
-    if(n==0){
-        return 0;
-    }
-
-    else{
-
-        return n + Soma(n-1);
-    }
-
-}
-
-int main(){
-
-    int t, i;
-
-    scanf("%d", &t);
-
-    int num[t];
-
-    for(i=0;i<t;i++){
-        scanf("%d", &num[i]);
-    }
-
-    for(i=0;i<t;i++){
-        printf("%d\n", Soma(num[i]));
-    }
+    printf("%d", numeroReverso(n, 0));
 
     return 0;
+}
+
+int numeroReverso(int n, int reverso) {
+
+    if (n == 0) {
+        return reverso;
+
+    }
+
+    reverso = (reverso * 10) + (n % 10);
+
+    return numeroReverso(n / 10, reverso);
 }
