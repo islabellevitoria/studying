@@ -1,50 +1,70 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
+
+#define max 10
 
 typedef struct {
 
-    int *vetor;
-    int tamanho;
+    char *nome;
+    int idade;
 
-}Estrutura;
+}Aluno;
 
-void insereElemento(Estrutura *estrutura, int i){
-    int elemento;
-    scanf("%d", &elemento);
-    estrutura->vetor[i] = elemento;
+typedef struct {
+
+    Aluno aluno[max];
+
+}Classe;
+
+void inserirAlunosTurma(Classe *classe){
+
+    int i;
+        for(i=0;i<max;i++){
+            printf("Escreva o nome do aluno %d: ", i+1);
+            scanf("%[^\n]", classe->aluno[i].nome);
+            getchar();
+            printf("escreva a idade do aluno %d: ", i+1);
+            scanf("%d", &classe->aluno[i].idade);
+            getchar();
+        }
+
+        return;
+
+}
+
+void imprimeLista(Classe *classe){
+
+    int i;
+    for(i=0;i<max;i++){
+        printf("nome: %s ", classe->aluno[i].nome);
+        printf("idade: %d", classe->aluno[i].idade);
+        printf("\n");
+    }
+
     return;
-
 }
 
 int main(){
 
-    Estrutura estrutura;
+    Classe classe;
     int i;
-    int tamanho;
 
-    printf("Insira o tamanho do vetor: ");
-    scanf("%d", &estrutura.tamanho);
-
-    estrutura.vetor = (int *)malloc(estrutura.tamanho * sizeof(int));
-
-    if(estrutura.vetor==NULL){
-        printf("Nao foi possivel alocar memoria");
-        return 1;
+    for(i=0;i<max;i++){
+        classe.aluno[i].nome = (char*)malloc(50 * sizeof(char));
+        if(classe.aluno[i].nome==NULL){
+            printf("Erro ao alocar memoria\n");
+            return 1;
+        }
     }
 
-    printf("Insira os elementos do vetor: ");
-    for( i = 0; i < estrutura.tamanho; i++){
-        insereElemento(&estrutura, i);
+    inserirAlunosTurma(&classe);
+    imprimeLista(&classe);
+
+    for(i=0;i<max;i++){
+        free(classe.aluno[i].nome);
     }
 
-    printf("Elementos do vetor: \n");
-    for(i=0;i<estrutura.tamanho;i++){
-    printf("%d ", estrutura.vetor[i]);
-    }
-
-    printf("\n");
-
-    free(estrutura.vetor);
 
     return 0;
 }
