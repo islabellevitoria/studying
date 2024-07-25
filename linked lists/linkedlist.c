@@ -34,7 +34,7 @@ void insert_at_beginning(Node **list, int number){
 /*Puts the value in the middle of the list*/
 /*the temp variable is used to go through the list to find the previous value
 the previous value is the value before the value i want to put on the list
-it cannot be the last value (temp->next CANNOT be NULL)*/
+it cannot be the last value (temp->next CANNOT be NULL) because i want to put in the middle and not at the end*/
 
 void insert_at_middle(Node **list, int number, int previous){
 
