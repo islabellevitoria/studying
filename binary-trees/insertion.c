@@ -41,10 +41,10 @@ void inserirEsquerda(No *no, int num){
         no->esq = novo;
     }
     else{
-        if(num < no->esq){
+        if(num < no->esq->valor){
             inserirEsquerda(no->esq,num);
         }
-        else{
+        if(num > no->esq->valor){
             inserirDireita(no->esq,num);
         }
     }
@@ -60,18 +60,28 @@ void inserirDireita(No *no, int num){
         no->dir = novo;
     }
     else{
-        if(num < no->dir){
+        if(num < no->dir->valor){
             inserirEsquerda(no->dir,num);
         }
-        else{
+        if(num > no->dir->valor){
             inserirDireita(no->dir,num);
         }
     }
 
 }
 
+void imprimir(No *raiz){
+
+    if(raiz){
+        imprimir(raiz->esq);
+        printf("%d", raiz->valor);
+        imprimir(raiz->dir);
+    }
+
+}
+
 int main(){
 
-    Arvore *arv;
+    Arvore arv;
     int num;
 }
