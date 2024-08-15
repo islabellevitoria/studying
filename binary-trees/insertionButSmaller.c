@@ -8,27 +8,21 @@ typedef struct node{
 
 }Node;
 
-typedef struct{
-
-    Node *root;
-
-}Tree;
-
 Node* insert(Node *root, int num);
 void print_tree(Node *root);
 
 int main(){
 
-    Tree tree;
-    tree.root = NULL;
+    Node *root;
+    root = NULL;
     int num;
 
-    tree.root = insert(tree.root,500);
-    tree.root = insert(tree.root,700);
-    tree.root = insert(tree.root,200);
-    tree.root = insert(tree.root,300);
+    root = insert(root,500);
+    root = insert(root,700);
+    root = insert(root,200);
+    root = insert(root,300);
 
-    print_tree(tree.root);
+    print_tree(root);
 
 
 return 0;
